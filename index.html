@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Filer</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins');
+        
+        .text3 {
+           text-align: center;
+           margin: auto 80px;
+           position: relative;
+           line-height: 60px;
+           color: #555;
+           font-family: 'Poppins';
+        }
+
+        .text3::after {
+           content: '';
+           background: #fc94af;
+           width: 80px;
+           height: 5px;
+           position: absolute;
+           bottom: 0;
+           left: 50%;
+           transform: translateX(-50%);  
+        }
+        .Deals {
+            margin: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .category {
+            display: flex;
+            flex-wrap: wrap; 
+            width: 100%; 
+        }
+
+        .col4 {
+            flex-basis: calc(33.33% - 20px);
+            margin-bottom: 30px;
+            padding: 10px;
+            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .col4:hover{
+            transform: translateY(-5px);
+        }
+
+        .col4 img {
+            max-width: 100%;
+            max-height: 350px; 
+            height: auto;
+            
+        }
+
+        .col4 h3 {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .col4 p {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+
+        .col4 p:last-child {
+            font-size: 16px;
+            margin-top: 10px;
+            color: rgb(0, 0, 0);
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            font-size: 18px;
+            padding: 5px;
+        }
+
+        select {
+            width: 150px;
+            font-size: 18px;
+            padding: 5px;
+        }
+
+        #showProductsButton {
+            font-size: 18px;
+            padding: 5px 10px;
+            background-color: #0074cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #showProductsButton:hover {
+            background-color: #005aa3;
+        }
+
+        
+        @media screen and (max-width: 768px) {
+            .col4 {
+                flex-basis: calc(50% - 20px);
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .Deals {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2 class="text3">Category Filter</h2>
+     <div>
+        <label for="categorySelect">Select category:</label>
+        <select id="categorySelect">
+            <option value="all">All</option>
+            <option value="clothing">Clothing</option>
+            <option value="shoes">Shoes</option>
+            <option value="perfume">Perfume</option>
+            <option value="jewellery">Jewellery</option>
+            <option value="watches">Watches</option>
+        </select><br><br>
+    </div>
+
+    
+    <div class="Deals" id="deal1">
+        <div class="category">
+            <div class="col4" id="product1" > 
+                <img src="offer1.png" alt="Product 1">
+                <h3>Bandhani Printed Kurta</h3>
+                <p>Rating: &#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                <p>Price: Rs 938</p>
+            </div>
+            <div class="col4" id="product2"> 
+                <img src="offer3.jpg" alt="Product 2">
+                <h3>HRX Shoes</h3>
+                <p>Rating: &#9733; &#9733; &#9733; &#9734; &#9734;</p>
+                <p>Price: Rs 899</p>
+            </div>
+            <div class="col4" id="product3" > 
+                <img src="offer2.jpg" alt="Product 3">
+                <h3>SKY Perfume</h3>
+                <p>Rating: &#9733; &#9733; &#9733; &#9733; &#9733;</p>
+                <p>Price: Rs 1095</p>
+            </div>
+            <div class="col4" id="product4"> 
+                <img src="offer4.png" alt="Product 4">
+                <h3>Saraf RS Jewellery</h3>
+                <p>Rating: &#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                <p>Price: Rs 1750</p>
+            </div>
+            <div class="col4" id="product5" >
+                <br>
+                <br>
+                <img src="image4.png" alt="Product 5">
+                <br>
+                <br>
+                <h3>XMMN Shoes</h3>
+                <p>Rating: &#9733; &#9733; &#9733; &#9734; &#9734;</p>
+                <p>Price: Rs 1960</p>
+            </div>
+            <div class="col4" id="product6"> 
+                <br>
+                <br>
+                <br>
+                <img src="image8.png" alt="Product 6">
+                <br>
+                <br>
+                <br>
+                <h3>Samsang Smart Watch</h3>
+                <p>Rating: &#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                <p>Price: Rs 3570</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("categorySelect").addEventListener("change", function() {
+            const selectedCategory = this.value;
+            const products = document.querySelectorAll(".col4");
+
+            for (const product of products) {
+                product.style.display = "none";
+            }
+
+            if (selectedCategory === "all") {
+                document.getElementById("product1").style.display = "block";
+                document.getElementById("product2").style.display = "block";
+                document.getElementById("product3").style.display = "block";
+                document.getElementById("product4").style.display = "block";
+                document.getElementById("product5").style.display = "block";
+                document.getElementById("product6").style.display = "block";
+            } else if (selectedCategory === "clothing") {
+                document.getElementById("product1").style.display = "block";
+            } else if (selectedCategory === "shoes") {
+                document.getElementById("product2").style.display = "block";
+                document.getElementById("product5").style.display = "block";
+            } else if (selectedCategory === "perfume") {
+                document.getElementById("product3").style.display = "block";
+            } else if (selectedCategory === "jewellery") {
+                document.getElementById("product4").style.display = "block";
+            } else if (selectedCategory === "watches") {
+                document.getElementById("product6").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
+
